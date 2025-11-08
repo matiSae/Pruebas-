@@ -19,8 +19,42 @@ public class   Controller_poliretos {
                 System.out.println("|");
             }
 
-        }while   
+             }while  (); 
            
+<<<<<<< HEAD
+=======
+            do{ 
+            valoresGenericos = IngresarValores.nextLine(); 
+            operaciones =Integer.parseInt(valoresGenericos);
+            }while(operaciones <1 || operaciones >8);    
+            switch (operaciones) {
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    
+                    break;
+                case 6:
+                    
+                    break;
+                case 7:
+                    
+                    break;
+                case 8:
+
+                    break;
+            }
+        
+>>>>>>> 645f113cf42d5bfa393f7370ef708753a5c318f6
         }
 
 }
