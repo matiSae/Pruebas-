@@ -17,7 +17,7 @@ public class Controller_poliretos {
             String [] secciones = {"1. Series numericas", "2. Series de caracteres", "3. Figuras", "4. Cadenas de caracteres", "5. Arrays", "6. Loading", "7. Recursion", "8. Grafos y automatas"};
             String [] integrantes = {"1. Matias Quinchiguango", "2. Micaela Sajal", "3. Michael Sotomayor", "4. Robbinson Tandazo", "5. Victoria Torres", "6. Sebastián Zúñiga"};
             
-            boolean entradaValida;
+            boolean entradaValida, operacionValida, confirmacionValida;
 
             imprimirTitulo();
                  
@@ -53,10 +53,18 @@ public class Controller_poliretos {
                     break;
                 case 2:
                     do {
+                        operacionValida = false;
                         imprimirMenu(secciones, "operaciones");
-                        operacionARealizar = ingresoDatos.nextInt();
-                        ingresoDatos.nextLine();
-                        
+                        try {
+                            operacionARealizar = ingresoDatos.nextInt();
+                            ingresoDatos.nextLine();
+                            if (operacionARealizar >= 1 && operacionARealizar <= 8){
+                                operacionValida = true;
+                            }
+                        } catch (InputMismatchException e) {
+                            imprimirErrorDatosInvalidos();
+                            ingresoDatos.nextLine();
+                        }
                         switch(operacionARealizar) {
                             case 1:
                                 // Series numericas
@@ -88,19 +96,27 @@ public class Controller_poliretos {
                                 break;
                         }
 
-                        if (operacionARealizar > 1 && operacionARealizar < 8){
+                        if (operacionValida){
                             System.out.println("Si desea realizar otra operacción, digite 2. De lo contrario, digite 1.");
                             
                             do{
-                                seguirOperaciones = ingresoDatos.nextInt();
-                                ingresoDatos.nextLine();
-                                if (seguirOperaciones  != 1 && seguirOperaciones != 2) {
+                                confirmacionValida = false;
+                                try {
+                                    seguirOperaciones = ingresoDatos.nextInt();
+                                    ingresoDatos.nextLine();
+                                    if (seguirOperaciones == 1 || seguirOperaciones == 2) confirmacionValida = true;
+                                } catch (InputMismatchException e) {
+                                    imprimirErrorDatosInvalidos();
+                                    ingresoDatos.nextLine();
+                                }
+                                
+                                if (!confirmacionValida) {
                                     imprimirErrorOpcionIncorrecta();
                                 }
-                            }while (seguirOperaciones != 1 && seguirOperaciones != 2);
+                            }while (!confirmacionValida);
                             
                         }
-                    } while (seguirOperaciones != 1);
+                    }while (!operacionValida || seguirOperaciones == 1);
                     break;
                 case 3:
                     System.out.println("Usted ha salido del programa POLIRETOS - GRUPO 5");
@@ -113,16 +129,20 @@ public class Controller_poliretos {
             if (opcionGeneral != 3){
                 System.out.println("Digite 1 para regresar al menú principal.");
                 do {
-                continuar = ingresoDatos.nextInt();
-                ingresoDatos.nextLine();
-                if (continuar  != 1) {
-                    imprimirErrorOpcionIncorrecta();
+                    entradaValida = false;
+                try {
+                    continuar = ingresoDatos.nextInt();
+                    ingresoDatos.nextLine();
+                    if (continuar == 1) entradaValida = true;
+                } catch (InputMismatchException e) {
+                    imprimirErrorDatosInvalidos();
+                    ingresoDatos.nextLine();
                 }
                 } while (continuar != 1);
             }
            
                 
-        }while (opcionGeneral != 3);
+        }while (!entradaValida || opcionGeneral != 1);
             } finally {
                 if (ingresoDatos != null) {
                     ingresoDatos.close();
