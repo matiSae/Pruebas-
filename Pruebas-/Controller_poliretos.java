@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class   Controller_poliretos {
+    Scanner valoresGenericos = new Scanner(System.in);
+    Integer operaciones;
         public void iniciar(){ 
             Scanner IngresarValores = new Scanner(System.in);
             String valoresGenericos;
@@ -30,7 +32,7 @@ public class   Controller_poliretos {
            
             do{ 
             valoresGenericos = IngresarValores.nextLine(); 
-            goperaciones =Integer.parseInt(valoresGenericos);
+            operaciones =Integer.parseInt(valoresGenericos);
             }while(operaciones <1 || operaciones >8);    
             switch (operaciones) {
                 case 1:
@@ -59,10 +61,6 @@ public class   Controller_poliretos {
                     break;
             }
         
-<<<<<<< HEAD
-
-=======
->>>>>>> 0e5a11056360039355cba0325a9e55c1c927034f
         }
 
 }
