@@ -28,7 +28,7 @@ public class Controller_poliretos {
             do{
                 
             try {
-                System.out.println("Ingrese opción: ");
+                System.out.print("Opción ingresada: ");
                 opcionGeneral = ingresoDatos.nextInt();
                 ingresoDatos.nextLine();
 
@@ -58,9 +58,9 @@ public class Controller_poliretos {
                         try {
                             operacionARealizar = ingresoDatos.nextInt();
                             ingresoDatos.nextLine();
-                            if (operacionARealizar >= 1 && operacionARealizar <= 8){
-                                operacionValida = true;
-                            }
+                            if (operacionARealizar >= 1 && operacionARealizar <= 8) operacionValida = true;
+                            else imprimirErrorOpcionIncorrecta();
+
                         } catch (InputMismatchException e) {
                             imprimirErrorDatosInvalidos();
                             ingresoDatos.nextLine();
@@ -105,14 +105,13 @@ public class Controller_poliretos {
                                     seguirOperaciones = ingresoDatos.nextInt();
                                     ingresoDatos.nextLine();
                                     if (seguirOperaciones == 1 || seguirOperaciones == 2) confirmacionValida = true;
+                                    else imprimirErrorOpcionIncorrecta();
+
                                 } catch (InputMismatchException e) {
                                     imprimirErrorDatosInvalidos();
                                     ingresoDatos.nextLine();
                                 }
                                 
-                                if (!confirmacionValida) {
-                                    imprimirErrorOpcionIncorrecta();
-                                }
                             }while (!confirmacionValida);
                             
                         }
@@ -127,20 +126,22 @@ public class Controller_poliretos {
             }
         
             if (opcionGeneral != 3){
-                System.out.println("Digite 1 para regresar al menú principal.");
+                System.out.print("Digite 1 para regresar al menú principal: ");
                 do {
                     entradaValida = false;
                 try {
                     continuar = ingresoDatos.nextInt();
                     ingresoDatos.nextLine();
                     if (continuar == 1) entradaValida = true;
+                    else imprimirErrorRegresarMenu();
+
                 } catch (InputMismatchException e) {
                     imprimirErrorDatosInvalidos();
                     ingresoDatos.nextLine();
                 }
                 } while (continuar != 1);
             }
-           3
+           
                 
         }while (!entradaValida || opcionGeneral != 3);
             } finally {
@@ -151,7 +152,10 @@ public class Controller_poliretos {
     }
     
 
-
+        public void imprimirErrorRegresarMenu(){
+            System.out.println(ROJO + "\n============= ERROR =============");
+            System.out.println("Digite 1 para regresar al menu general." + RESET + "\n");
+        }
         public void imprimirErrorOpcionIncorrecta(){
             System.out.println(ROJO + "\n============= ERROR =============");
             System.out.println("La opción ingresada no es correcta. Intente nuevamente." + RESET + "\n");
