@@ -1,10 +1,5 @@
-import java.util.Scanner;
-
 public class   Controller_poliretos {
-    Scanner IngresarValores = new Scanner(System.in);
         public void iniciar(){ 
-            String valoresGenericos;
-            Integer operaciones;
             final String ROJO = "\u001B[31m";
             final String RESET = "\u001B[0m";
             final String VERDE = "\u001B[32m";
@@ -17,47 +12,15 @@ public class   Controller_poliretos {
             System.out.println();
             System.out.printf("%63s%n", VERDE + "====== MENU DE OPERACIONES =====");
 
-<<<<<<< HEAD
             for (int i = 0; i < secciones.length; i++){
-                System.out.println("|");
+                System.out.print("|");
                 System.out.println(secciones[i]);
-                
+                " ".repeat(32 - secciones[i].length());
+                System.out.println("|");
             }
 
         }while   
            
-=======
-            do{ 
-            valoresGenericos = IngresarValores.nextLine(); 
-            operaciones =Integer.parseInt(valoresGenericos);
-            }while(operaciones <1 || operaciones >8);    
-            switch (operaciones) {
-                case 1:
-                    
-                    break;
-                case 2:
-                    
-                    break;
-                case 3:
-                    
-                    break;
-                case 4:
-                    
-                    break;
-                case 5:
-                    
-                    break;
-                case 6:
-                    
-                    break;
-                case 7:
-                    
-                    break;
-                case 8:
-
-                    break;
-            }
->>>>>>> 16651c78e438da3232fe45f90c43425dfd2866cc
         }
 
 }
