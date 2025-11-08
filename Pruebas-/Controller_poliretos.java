@@ -19,13 +19,13 @@ public class   Controller_poliretos {
                 System.out.println("|");
             }
 
+            System.err.println("________________________________");
+
              }while  (); 
            
-<<<<<<< HEAD
-=======
             do{ 
             valoresGenericos = IngresarValores.nextLine(); 
-            operaciones =Integer.parseInt(valoresGenericos);
+            goperaciones =Integer.parseInt(valoresGenericos);
             }while(operaciones <1 || operaciones >8);    
             switch (operaciones) {
                 case 1:
@@ -54,7 +54,7 @@ public class   Controller_poliretos {
                     break;
             }
         
->>>>>>> 645f113cf42d5bfa393f7370ef708753a5c318f6
+
         }
 
 }
