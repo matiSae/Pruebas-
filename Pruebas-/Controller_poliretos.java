@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controller_poliretos {
@@ -10,33 +11,49 @@ public class Controller_poliretos {
             Scanner ingresoDatos = null;
             try {
                 ingresoDatos = new Scanner(System.in);
-            int opcionGeneral = 0, continuar = 0, operacionARealizar = 0;
+            int opcionGeneral = 0, continuar = 0, operacionARealizar = 0, seguirOperaciones = 0;
             
             String [] opcMenuPrincipal = {"1. Ver integrantes del grupo", "2. Ingresar al menú de operaciones", "3. Salir"};
             String [] secciones = {"1. Series numericas", "2. Series de caracteres", "3. Figuras", "4. Cadenas de caracteres", "5. Arrays", "6. Loading", "7. Recursion", "8. Grafos y automatas"};
             String [] integrantes = {"1. Matias Quinchiguango", "2. Micaela Sajal", "3. Michael Sotomayor", "4. Robbinson Tandazo", "5. Victoria Torres", "6. Sebastián Zúñiga"};
             
+            boolean entradaValida;
+
             imprimirTitulo();
                  
 
         do{   
             imprimirMenu(opcMenuPrincipal, "menu general");
-            do{ 
-            opcionGeneral = ingresoDatos.nextInt();
-            ingresoDatos.nextLine();
+           entradaValida = false;
+            do{
+                
+            try {
+                System.out.println("Ingrese opción: ");
+                opcionGeneral = ingresoDatos.nextInt();
+                ingresoDatos.nextLine();
 
-            if (opcionGeneral < 1 || opcionGeneral > 3){
-                imprimirErrorOpcionIncorrecta();
+                if (opcionGeneral >= 1 && opcionGeneral <= 3){
+                    entradaValida = true;
+                }else{
+                    imprimirErrorOpcionIncorrecta();
+                }
+                
+            } catch (InputMismatchException e) {
+                imprimirErrorDatosInvalidos();
+                ingresoDatos.nextLine();
             }
-            }while(opcionGeneral <1 || opcionGeneral >3);    
+            }while (!entradaValida);    
+            
+
+              
             
             switch (opcionGeneral) {
                 case 1:
                     imprimirMenu(integrantes, "integrantes");
                     break;
                 case 2:
-                    imprimirMenu(secciones, "operaciones");
                     do {
+                        imprimirMenu(secciones, "operaciones");
                         operacionARealizar = ingresoDatos.nextInt();
                         ingresoDatos.nextLine();
                         
@@ -65,12 +82,25 @@ public class Controller_poliretos {
                             case 8:
                                 // Grafos y automatas
                                 break;
+                            default:
+                                imprimirErrorOpcionIncorrecta();
+                                operacionARealizar = 0;
+                                break;
                         }
-                        System.out.println("Si desea realizar otra operacción, digite 2. De lo contrario, digite 1.");
-                        if (operacionARealizar  != 1 || operacionARealizar != 2) {
-                            imprimirErrorOpcionIncorrecta();
+
+                        if (operacionARealizar > 1 && operacionARealizar < 8){
+                            System.out.println("Si desea realizar otra operacción, digite 2. De lo contrario, digite 1.");
+                            
+                            do{
+                                seguirOperaciones = ingresoDatos.nextInt();
+                                ingresoDatos.nextLine();
+                                if (seguirOperaciones  != 1 && seguirOperaciones != 2) {
+                                    imprimirErrorOpcionIncorrecta();
+                                }
+                            }while (seguirOperaciones != 1 && seguirOperaciones != 2);
+                            
                         }
-                    } while (operacionARealizar != 1);
+                    } while (seguirOperaciones != 1);
                     break;
                 case 3:
                     System.out.println("Usted ha salido del programa POLIRETOS - GRUPO 5");
@@ -103,13 +133,13 @@ public class Controller_poliretos {
 
 
         public void imprimirErrorOpcionIncorrecta(){
-            System.out.println("============= ERROR =============");
-            System.out.println("La opción ingresada no es correcta. Intente nuevamente.");
+            System.out.println(ROJO + "\n============= ERROR =============");
+            System.out.println("La opción ingresada no es correcta. Intente nuevamente." + RESET + "\n");
         }
 
         public void imprimirErrorDatosInvalidos() {
-            System.out.println("============= ERROR =============");
-            System.out.println("El valor ingresado no es válido. Intente nuevamente");
+            System.out.println(ROJO + "\n============= ERROR =============");
+            System.out.println("El valor ingresado no es válido. Intente nuevamente." + RESET + "\n");
         }
 
     
