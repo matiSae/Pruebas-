@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class   Controller_poliretos {
+    Scanner valoresGenericos = new Scanner(System.in);
+    Integer operaciones;
         public void iniciar(){ 
             Scanner IngresarValores = new Scanner(System.in);
             String valoresGenericos;
