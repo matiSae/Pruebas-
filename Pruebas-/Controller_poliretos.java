@@ -116,7 +116,7 @@ public class Controller_poliretos {
                             }while (!confirmacionValida);
                             
                         }
-                    }while (!operacionValida || seguirOperaciones == 1);
+                    }while (!operacionValida || seguirOperaciones == 2);
                     break;
                 case 3:
                     System.out.println("Usted ha salido del programa POLIRETOS - GRUPO 5");
@@ -140,9 +140,9 @@ public class Controller_poliretos {
                 }
                 } while (continuar != 1);
             }
-           
+           3
                 
-        }while (!entradaValida || opcionGeneral != 1);
+        }while (!entradaValida || opcionGeneral != 3);
             } finally {
                 if (ingresoDatos != null) {
                     ingresoDatos.close();
