@@ -17,16 +17,14 @@ public class   Controller_poliretos {
             System.out.println();
             System.out.printf("%63s%n", VERDE + "====== MENU DE OPERACIONES =====");
 
-<<<<<<< HEAD
             for (int i = 0; i < secciones.length; i++){
                 System.out.println("|");
                 System.out.println(secciones[i]);
                 
             }
 
-        }while   
+             }while  (); 
            
-=======
             do{ 
             valoresGenericos = IngresarValores.nextLine(); 
             operaciones =Integer.parseInt(valoresGenericos);
@@ -57,7 +55,7 @@ public class   Controller_poliretos {
 
                     break;
             }
->>>>>>> 16651c78e438da3232fe45f90c43425dfd2866cc
+        
         }
 
 }
