@@ -1,5 +1,10 @@
+import java.util.Scanner;
+
 public class   Controller_poliretos {
         public void iniciar(){ 
+            Scanner IngresarValores = new Scanner(System.in);
+            String valoresGenericos;
+            int operaciones;
             final String ROJO = "\u001B[31m";
             final String RESET = "\u001B[0m";
             final String VERDE = "\u001B[32m";
@@ -21,8 +26,6 @@ public class   Controller_poliretos {
 
              }while  (); 
            
-<<<<<<< HEAD
-=======
             do{ 
             valoresGenericos = IngresarValores.nextLine(); 
             operaciones =Integer.parseInt(valoresGenericos);
@@ -54,7 +57,6 @@ public class   Controller_poliretos {
                     break;
             }
         
->>>>>>> 645f113cf42d5bfa393f7370ef708753a5c318f6
         }
 
 }
